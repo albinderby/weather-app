@@ -1,0 +1,11 @@
+table {
+    table-layout: fixed;   /* force fixed layout */
+    width: 100%;           /* distribute equally */
+    border-collapse: collapse; /* cleaner borders */
+  }
+  
+  td, th {
+    border: 1px solid black;
+    text-align: center;
+  }
+  

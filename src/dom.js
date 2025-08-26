@@ -37,3 +37,17 @@ export function createTable(){
         table
     };
 }
+
+
+export function tempButtonToggler(button){
+console.log("working in tempbutoon togler dom")
+    if(button.textContent==="celsius"){
+     button.textContent="fereinheit";
+        return "us";
+    }else{
+    button.textContent="celsius";
+    return "metric";
+    }
+}
+
+
