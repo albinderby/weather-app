@@ -1,10 +1,27 @@
+import { createTable } from "./dom.js";
+
 const searchInput=document.querySelector("#searchInputId");
 const searchButton=document.querySelector("#searchButtonId");
+
+const tableFunction=createTable();
+tableFunction.createTableHead()
+	searchButton.after(tableFunction.table);
 
 searchButton.addEventListener("click",async()=>{
 	const location=clientSideInputTaker();
 	const locationData=await fecthDataFromServer(location);
+	
+	const logingData={
+		loactionNameKey:locationData?.address,
+		currentTemperatureKey:locationData?.currentConditions.temp,
+		weatherDescriptionKey:locationData?.description
+	}
+	
+	tableFunction.createDataCells(logingData);
+	console.log(logingData);
+	searchButton.after(tableFunction.table);
 	console.log(locationData);
+
 });
 
 
@@ -20,8 +37,11 @@ async function fecthDataFromServer(location){
 			return response;
 		}
 		catch(error){
-			console.error(error);
+			console.error("fetch failed",error.message);
+
 		};
 	}
+
+	
 
 	
