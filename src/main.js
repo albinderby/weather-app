@@ -6,14 +6,11 @@ const searchInput=document.querySelector("#searchInputId");
 const searchButton=document.querySelector("#searchButtonId");
 const tableFunction=createTable();
 let TemperatureUnit="metric";
-tableFunction.createTableHead()
+tableFunction.createTableHead();
 	searchButton.after(tableFunction.table);
-
 searchButton.addEventListener("click",async()=>{
-	const location=clientSideInputTaker();
-	
+	const location=clientSideInputTaker();	
 	const locationData=await fecthDataFromServer(location,TemperatureUnit);
-	
 	const logingData={
 		loactionNameKey:locationData?.address,
 		currentTemperatureKey:locationData?.currentConditions.temp,
